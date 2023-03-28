@@ -1,0 +1,89 @@
+<script>
+  const zee = new XMLHttpRequest();
+  const method = "GET";
+  const url = "../data.json";
+  
+  zee.open(method,url,true);
+  zee.onreadystatechange = function(){
+    if(this.readyState == 4 && this.status == 200){
+      var data = JSON.parse(zee.responseText);
+      //batas
+      var rand = Math.floor(Math.random()*data.agirls.length);
+      var result = data.agirls[rand];
+      var web = `<hr><h1>Agirls example</h1><img src="${result}" height="300px"><hr>`
+      document.getElementById("agirls").innerHTML = web;
+      //batas
+      var rand1 = Math.floor(Math.random()*data.cosplay.length);
+      var result1 = data.cosplay[rand1];
+      var web1 = `<hr><h1>Cosplay example</h1><img src="${result1}" height="300px"><hr>`
+      document.getElementById("cosplay").innerHTML = web1;
+      //batas
+      var rand2 = Math.floor(Math.random()*data.neko.length);
+      var result2 = data.neko[rand2];
+      var web2 = `<hr><h1>Neko example</h1><img src="${result2}" height="300px"><hr>`
+      document.getElementById("neko").innerHTML = web2;
+      //batas
+      var rand3 = Math.floor(Math.random()*data.ecchi.length);
+      var result3 = data.ecchi[rand3];
+      var web3 = `<hr><h1>Ecchi example</h1><img src="${result3}" height="300px"><hr>`
+      document.getElementById("ecchi").innerHTML = web3;
+      //batas
+      var rand4 = Math.floor(Math.random()*data.miku.length);
+      var result4 = data.miku[rand4];
+      var web4 = `<hr><h1>Miku example</h1><img src="${result4}" height="300px"><hr>`
+      document.getElementById("miku").innerHTML = web4;
+      //batas
+      var rand5 = Math.floor(Math.random()*data.nino.length);
+      var result5 = data.nino[rand5];
+      var web5 = `<hr><h1>Nino example</h1><img src="${result5}" height="300px"><hr>`
+      document.getElementById("nino").innerHTML = web5;
+      //batas
+      var rand6 = Math.floor(Math.random()*data.zero.length);
+      var result6 = data.zero[rand4];
+      var web6 = `<hr><h1>Zero example</h1><img src="${result6}" height="300px"><hr>`
+      document.getElementById("zero").innerHTML = web6;
+      //batas
+      var web7 = `<hr><h6>${data.zee}</h6><hr>`
+      document.getElementById("zee").innerHTML = web7;
+    }
+  };
+  zee.send();
+  function nsfw(){
+    var a = prompt("masukan password : ");
+    if(a == "Nsfw12"){
+      zee.open(method,url,true);
+      zee.onreadystatechange = function(){
+        if(this.readyState == 4 && this.status == 200){
+          var x = JSON.parse(zee.responseText);
+          var y = Math.floor(Math.random()*x.nsfw.length);
+          var res = x.nsfw[y];
+          var web = `<img src="${res}" height="300px">`;
+          document.write(web);
+        }
+      }
+      zee.send();
+    } else {
+      alert("Password salah dan akan di kembalikan ke halaman awal");
+    }
+  }
+</script>
+<div id="agirls"></div>
+<div id="cosplay"></div>
+<div id="neko"></div>
+<div id="ecchi"></div>
+<div id="miku"></div>
+<div id="nino"></div>
+<div id="zero"></div>
+<div id="nsfw">
+  <hr><h1>Nsfw example</h1>
+  <p>Konten tidak bisa di tampilkan karena sensitif</p>
+  <!-- script src="xx.js"></script -->
+  <button onclick="nsfw()">Show content</button>
+  <hr>
+</div>
+<div id="zee"></div>
+<style>
+  body {
+    text-align: center;
+  }
+</style>
